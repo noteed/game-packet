@@ -1,0 +1,33 @@
+name:                game-packet
+version:             0.1
+Cabal-Version:       >= 1.6
+synopsis:            Simple UDP-based game networking
+description:         game-packet provides a simple networking stack
+                     based on UDP for fast-paced action games. The
+                     principles are from http://gafferongames.com/.
+stability:           Provisional
+category:            Network
+license:             BSD3
+license-file:        LICENSE
+author:              Vo Minh Thu <noteed@gmail.com>
+maintainer:          Vo Minh Thu <noteed@gmail.com>
+build-type:          Simple
+
+Source-repository head
+  type: git
+  location: git://github.com/noteed/game-packet.git
+
+library
+  exposed-modules:     Network.Game.Socket,
+                       Network.Game.Connection,
+                       Network.Game.Acknowledgement
+
+  build-depends:       base >= 4 && < 5,
+                       bytestring == 0.9.*,
+                       cereal == 0.3.*
+
+  ghc-options:         -Wall
+
+  c-sources:           cbits/networking.c
+  include-dirs:        cbits
+
